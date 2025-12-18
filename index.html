@@ -9,26 +9,33 @@
 
 <body>
   <!-- Top navigation -->
-  <header class="topbar">
+    <header class="topbar">
+      <!-- Mobile dropdown -->
+      <div class="nav nav--mobile">
+        <button class="nav__toggle" id="menuBtn" aria-haspopup="true" aria-expanded="false" aria-controls="mobileMenu">
+          MENU
+        </button>
+      </div>
 
-    <!-- Mobile dropdown -->
-    <details class="nav nav--mobile">
-      <summary class="nav__toggle">MENU</summary>
-      <nav class="nav__panel" aria-label="Primary navigation">
-        <a href="index.html">HOME</a>
-        <a href="walls.html">THE WALLS</a>
-        <a href="404.html">FAQ</a>
-      </nav>
-    </details>
+      <!-- Fullscreen mobile menu overlay -->
+      <div class="menu-overlay" id="mobileMenu" hidden>
+        <button class="menu-close" id="menuClose" aria-label="Close menu">X</button>
 
-    <!-- Desktop navigation -->
-    <nav class="nav nav--desktop" aria-label="Primary navigation">
-      <a class="nav__link is-active" href="index.html">HOME</a>
-      <a class="nav__link" href="walls.html">THE WALLS</a>
-      <a class="nav__link" href="404.html">FAQ</a>
-    </nav>
+        <nav class="menu-links" aria-label="Mobile navigation">
+          <a href="index.html">HOME</a>
+          <a href="walls.html">THE WALLS</a>
+          <a href="404.html">FAQ</a>
+        </nav>
+      </div>
 
-  </header>
+      <!-- Desktop navigation -->
+        <nav class="nav nav--desktop" aria-label="Primary navigation">
+          <a class="nav__link is-active" href="index.html">HOME</a>
+          <a class="nav__link" href="walls.html">THE WALLS</a>
+          <a class="nav__link" href="404.html">FAQ</a>
+        </nav>
+
+    </header>
 
   <!-- Main content -->
   <main class="main">
@@ -150,5 +157,6 @@
     </p>
   </footer>
 
+  <script src="scripts.js"></script>
 </body>
 </html>

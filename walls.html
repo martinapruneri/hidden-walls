@@ -1,11 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hidden Walls | The Walls</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hidden Walls | The Walls</title>
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles/walls.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
-<body>
-    <h1>The Walls Page</h1>
+
+<body class="walls-page">
+  <!-- Top navigation -->
+  <header class="topbar">
+    <!-- Mobile dropdown -->
+    <div class="nav nav--mobile">
+      <button
+        class="nav__toggle"
+        id="menuBtn"
+        aria-haspopup="true"
+        aria-expanded="false"
+        aria-controls="mobileMenu"
+        type="button"
+      >
+        MENU
+      </button>
+    </div>
+
+    <!-- Fullscreen mobile menu overlay -->
+    <div class="menu-overlay" id="mobileMenu" hidden>
+      <button class="menu-close" id="menuClose" aria-label="Close menu" type="button">X</button>
+
+      <nav class="menu-links" aria-label="Mobile navigation">
+        <a href="index.html">HOME</a>
+        <a href="walls.html">THE WALLS</a>
+        <a href="404.html">FAQ</a>
+      </nav>
+    </div>
+
+    <!-- Desktop navigation -->
+    <nav class="nav nav--desktop" aria-label="Primary navigation">
+      <a class="nav__link" href="index.html">HOME</a>
+      <a class="nav__link is-active" href="walls.html">THE WALLS</a>
+      <a class="nav__link" href="404.html">FAQ</a>
+    </nav>
+  </header>
+
+  <!-- MAP + SHEET -->
+  <main class="walls" aria-label="The Walls page">
+    <!-- Map layer -->
+    <section class="map-layer" aria-label="Map">
+      <div id="map" class="map"></div>
+    </section>
+
+    <!-- Map UI -->
+    <div class="map-ui" role="group" aria-label="Map controls">
+      <button class="adventure-btn" type="button">
+        Feeling adventurous?
+      </button>
+
+      <button class="filters-btn" type="button" aria-label="Filters">
+        <img src="assets/filters.svg" alt="">
+      </button>
+    </div>
+
+    <!-- Bottom sheet -->
+    <section class="sheet" id="sheet" data-state="collapsed" aria-label="Walls list">
+      <div class="sheet__handle" id="sheetHandle" aria-hidden="true">
+        <div class="sheet__grab"></div>
+      </div>
+
+      <div class="sheet__inner" id="sheetInner">
+        <div class="sheet__search">
+          <input
+            class="sheet__input"
+            type="search"
+            placeholder="Search spot..."
+            aria-label="Search spot"
+          >
+        </div>
+
+        <div class="cards">
+          <!-- Mejlgade card -->
+          <a class="wall-card" href="mejlgade.html">
+            <img class="wall-card__img" src="assets/walls/mejlgade.jpg" alt="Mejlgade">
+            <h2 class="wall-card__title">MEJLGADE</h2>
+            <p class="wall-card__text">
+              Blink and you'll miss it. Snævringen is one of Aarhus' smallest streets, but it's packed with attitude.
+              A quick walk here reveals bold graffiti, hidden details and the city's underground energy.
+            </p>
+          </a>
+
+          <!-- Godsbanen card -->
+          <a class="wall-card" href="godsbanen.html">
+            <img class="wall-card__img" src="assets/walls/godsbanen.jpg" alt="Godsbanen">
+            <h2 class="wall-card__title">GODSBANEN</h2>
+            <p class="wall-card__text">
+              Godsbanen is a hidden gem of Aarhus' street art scene, where walls come alive with ever-changing murals and graffiti.
+              Every visit is a chance to discover something new and unexpected.
+            </p>
+          </a>
+
+          <!-- Sydhavnen card -->
+          <a class="wall-card" href="sydhavnen.html">
+            <img class="wall-card__img" src="assets/walls/sydhavnen.jpg" alt="Sydhavnen">
+            <h2 class="wall-card__title">SYDHAVNEN</h2>
+            <p class="wall-card__text">
+              Sydhavnen is a hidden gem for street art lovers, where vibrant murals and creative tags transform industrial walls into an urban canvas.
+            </p>
+          </a>
+
+          <!-- Other card -->
+          <a class="wall-card" href="404.html">
+            <img class="wall-card__img" src="assets/walls/other.jpg" alt="Other spot">
+            <h2 class="wall-card__title">???</h2>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="scripts.js"></script>
 </body>
 </html>

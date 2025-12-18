@@ -43,23 +43,31 @@ body{
 .card__lead,
 .fineprint{
   font-family: "Roboto", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
-}
-
-
+  }
+  
 a{ color:inherit; text-decoration:none; }
 
-/* -------- MENU -------- */
+  /* -------- MENU CLOSED -------- */
 .topbar{
   height:72px;
   background: var(--purple);
   position: sticky;
   top: 0;
   z-index: 10;
+  display: flex;
+  justify-content: center;
 }
 
 .nav{ height:72px; }
 .nav--desktop{ display: none; }
-.nav--mobile{ display: block; }
+
+/* Mobile nav centered */
+.nav--mobile{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 72px;
+}
 
 .nav__toggle{
   height:72px;
@@ -72,6 +80,13 @@ a{ color:inherit; text-decoration:none; }
   user-select:none;
   list-style:none;
   color:#fff;
+
+  background: transparent;
+  border: 0;
+  padding: 0;
+
+  margin: 0 auto;
+  text-align: center;
 }
 
 .nav__toggle::-webkit-details-marker{ display:none; }
@@ -105,6 +120,67 @@ a{ color:inherit; text-decoration:none; }
   border-radius: 10px;
   background: rgba(255,255,255,0.06);
 }
+
+/* ---- MENU OPEN ---- */
+.menu-overlay{
+  position: fixed;
+  inset: 0;
+  background: var(--purple);
+  z-index: 9999;
+
+  display: grid;
+  place-items: center;
+}
+
+.menu-overlay[hidden]{
+  display: none !important;
+}
+
+.menu-links{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 56px;
+  text-align: center;
+}
+
+.menu-links a{
+  font-family: "Jimmy Collins", system-ui, sans-serif;
+  font-weight: normal;
+  font-size: 44px;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.menu-close{
+  position: absolute;
+  top: 22px;
+  right: 22px;
+
+  font-family: "Jimmy Collins", system-ui, sans-serif;
+  font-size: 48px;
+  color: #fff;
+
+  background: transparent;
+  border: 0;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.leaflet-container{
+  z-index: 0;
+}
+
+.menu-overlay{
+  z-index: 99999;
+}
+
+.topbar{
+  z-index: 1000;
+  position: sticky;
+}
+
 
 /* -------- MAIN BLACK AREA -------- */
 .main{
@@ -188,26 +264,21 @@ a{ color:inherit; text-decoration:none; }
   width: 77px;
   transform-origin: center;
   top: 58%;
-  transform: translateY(-50%) rotate(-8deg) scaleY(1.5); /* adjusted rotation and scaling */
+  transform: translateY(-50%) rotate(-8deg) scaleY(1.5);
 }
-
 
 .about-squiggle--right{
   right: -18px;
   width: 70px;
-  transform: translateY(-50%) rotate(-8deg); /* adjusted rotation */
+  transform: translateY(-50%) rotate(-8deg);
 }
-
-
 
 .copy,
 .section-title,
 .crest{
   position: relative;
   z-index: 1;
-}
-
-
+  }
 
 /* EXPLORATION CARDS */
 .explore{ text-align:center; padding-top: 14px; }
@@ -247,7 +318,6 @@ a{ color:inherit; text-decoration:none; }
   cursor: pointer;
 }
 
-
 .card__body{
   margin: 0;
   font-size:14px;
@@ -270,7 +340,7 @@ a{ color:inherit; text-decoration:none; }
 .footer__top{
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;              /* ✅ THIS is the missing piece */
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
   gap: 12px;
@@ -296,7 +366,6 @@ a{ color:inherit; text-decoration:none; }
   margin-bottom: 2px;
 }
 
-/* logo centered on its own line */
 .footer__logo{
   flex-basis: 100%;
   order: 3;
@@ -337,13 +406,15 @@ a{ color:inherit; text-decoration:none; }
   opacity: .85;
 }
 
-
 /* -------- DESKTOP LAYOUT -------- */
 @media (min-width: 1024px){
 
   /* Topbar: show nav desktop, hide dropdown */
-  .nav--mobile{ 
-    display: none; 
+  .nav--mobile{
+    display: none;
+  }
+  .topbar{
+    display: block;
   }
 
   .nav--desktop{
@@ -363,7 +434,6 @@ a{ color:inherit; text-decoration:none; }
     text-decoration: none;
   }
 
-  /* Underline PNG only on HOME active */
   .nav__link.is-active::after{
     content: "";
     position: absolute;
@@ -382,16 +452,16 @@ a{ color:inherit; text-decoration:none; }
   }
 
   /* Hero */
-  .kicker{ 
-    font-size: 34px; 
+  .kicker{
+    font-size: 34px;
   }
 
-  .logo{ 
-    max-width: 720px; 
+  .logo{
+    max-width: 720px;
   }
 
-  .crest{ 
-    margin-top: 24px; 
+  .crest{
+    margin-top: 24px;
   }
 
   /* About */
@@ -405,24 +475,24 @@ a{ color:inherit; text-decoration:none; }
     top: 54%;
     opacity: 1;
   }
-  
-  .about-squiggle--left{ 
+
+  .about-squiggle--left{
     left: 190px;
     width: 92px;
     top: 56%;
-    transform: translateY(-50%) rotate(-8deg) scaleY(1.75); /* adjusted rotation and scaling */
+    transform: translateY(-50%) rotate(-8deg) scaleY(1.75);
   }
 
-  .about-squiggle--right{ 
+  .about-squiggle--right{
     right: 190px;
     width: 92px;
     top: 50%;
-    transform: translateY(-50%) rotate(-8deg) scaleY(1.2); /* adjusted rotation */ 
+    transform: translateY(-50%) rotate(-8deg) scaleY(1.2);
   }
 
   /* Titles */
-  .section-title{ 
-    font-size: 28px; 
+  .section-title{
+    font-size: 28px;
   }
 
   /* Exploration cards */
@@ -435,7 +505,6 @@ a{ color:inherit; text-decoration:none; }
     padding-top: 26px;
   }
 
-  /* Explore title spans both columns */
   .explore > .section-title{
     grid-column: 1 / -1;
     margin-bottom: 10px;
@@ -466,7 +535,6 @@ a{ color:inherit; text-decoration:none; }
     gap: 18px;
   }
 
-  /* contact in the middle should NOT be right-aligned on desktop */
   .footer__contact{
     text-align: left;
     font-size: 16px;
@@ -487,7 +555,6 @@ a{ color:inherit; text-decoration:none; }
     margin-top: 12px;
   }
 
-  /* white icon squares like the screenshot */
   .social{
     width: 64px;
     height: 64px;
@@ -502,7 +569,6 @@ a{ color:inherit; text-decoration:none; }
     height: 34px;
   }
 
-  /* logo on the right */
   .footer__logo{
     width: 360px;
     max-width: 100%;
@@ -511,7 +577,6 @@ a{ color:inherit; text-decoration:none; }
     align-self: start;
   }
 
-  /* fineprint centered below everything */
   .fineprint{
     margin-top: 18px;
     text-align: center;

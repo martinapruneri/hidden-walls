@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hidden Walls | Sydhavnen</title>
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles/spots.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+
+<body>
+  <!-- Top navigation -->
+  <header class="topbar">
+    <div class="nav nav--mobile">
+      <button
+        class="nav__toggle"
+        id="menuBtn"
+        aria-haspopup="true"
+        aria-expanded="false"
+        aria-controls="mobileMenu">
+        MENU
+      </button>
+    </div>
+
+    <div class="menu-overlay" id="mobileMenu" hidden>
+      <button class="menu-close" id="menuClose" aria-label="Close menu">X</button>
+
+      <nav class="menu-links" aria-label="Mobile navigation">
+        <a href="index.html">HOME</a>
+        <a href="walls.html">THE WALLS</a>
+        <a href="404.html">FAQ</a>
+      </nav>
+    </div>
+
+    <nav class="nav nav--desktop" aria-label="Primary navigation">
+      <a class="nav__link" href="index.html">HOME</a>
+      <a class="nav__link" href="walls.html">THE WALLS</a>
+      <a class="nav__link" href="404.html">FAQ</a>
+    </nav>
+  </header>
+
+  <!-- PAGE -->
+  <main class="spot">
+    <!-- GALLERY -->
+    <section class="spot__gallery" aria-labelledby="galleryTitle">
+      <h2 id="galleryTitle" class="visually-hidden">Photo gallery</h2>
+
+      <div class="gallery" data-gallery>
+        <img class="gallery__img is-active" src="assets/walls/sydhavnen.jpg" alt="Sydhavnen street art wall">
+        <img class="gallery__img" src="assets/sydhavnen/sydhavnen-2.jpg" alt="Sydhavnen street art detail">
+        <img class="gallery__img" src="assets/sydhavnen/sydhavnen-3.jpg" alt="Sydhavnen murals and graffiti">
+        <img class="gallery__img" src="assets/sydhavnen/sydhavnen-4.jpg" alt="Sydhavnen street art spot">
+
+        <button class="gallery__nav gallery__nav--prev" type="button" aria-label="Previous photo" data-prev>‹</button>
+        <button class="gallery__nav gallery__nav--next" type="button" aria-label="Next photo" data-next>›</button>
+
+        <div class="gallery__thumbs" aria-label="Choose a photo">
+          <button class="gallery__thumb is-active" type="button" data-thumb="0"><img src="assets/walls/sydhavnen.jpg" alt=""></button>
+          <button class="gallery__thumb" type="button" data-thumb="1"><img src="assets/sydhavnen/sydhavnen-2.jpg" alt=""></button>
+          <button class="gallery__thumb" type="button" data-thumb="2"><img src="assets/sydhavnen/sydhavnen-3.jpg" alt=""></button>
+          <button class="gallery__thumb" type="button" data-thumb="3"><img src="assets/sydhavnen/sydhavnen-4.jpg" alt=""></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- HEADER -->
+    <section class="spot__head" aria-labelledby="spotTitle">
+      <div class="spot__titleblock">
+        <h1 id="spotTitle" class="spot__title">
+          <span class="spot__title--neon">SYDHAVNEN</span>
+          <span class="spot__title--by">by VARIOUS ARTISTS</span>
+        </h1>
+
+        <a
+          class="spot__meta"
+          href="https://www.google.com/maps?q=56.148944,10.210639"
+          target="_blank"
+          rel="noopener">
+          Kalkværksvej 17, 8000 Aarhus
+        </a>
+      </div>
+
+      <!-- MOBILE: only this share icon should be visible -->
+      <a class="spot__share" href="#" aria-label="Share this spot">
+        <img src="assets/share.svg" alt="">
+      </a>
+
+      <!-- DESKTOP: icons in a row + label underneath -->
+      <div class="spot__shareblock" aria-label="Share options">
+        <div class="spot__shareicons">
+          <a class="spot__shareicon" href="#" aria-label="Share this spot">
+            <img src="assets/share.svg" alt="">
+          </a>
+
+          <a class="spot__social" href="#" aria-label="Facebook">
+            <img src="assets/facebook.svg" alt="">
+          </a>
+
+          <a class="spot__social" href="#" aria-label="Instagram">
+            <img src="assets/instagram.svg" alt="">
+          </a>
+
+          <a class="spot__social" href="#" aria-label="TikTok">
+            <img src="assets/tiktok.svg" alt="">
+          </a>
+        </div>
+
+        <div class="spot__sharelabel">Share this spot</div>
+      </div>
+    </section>
+
+    <!-- TEXT -->
+    <section class="spot__text" aria-labelledby="descTitle">
+      <h2 id="descTitle" class="visually-hidden">Description</h2>
+
+      <p>
+        Sydhavnen is a hidden gem for street art lovers, where vibrant murals and creative tags transform industrial walls into an urban canvas.
+      </p>
+      <p>
+        Sydhavnen offers a raw and authentic street art experience in Aarhus. This area, once dominated by warehouses and docks, now showcases a mix of colourful murals, bold graffiti and experimental pieces that constantly evolve. Walking through Sydhavnen, you'll discover both large-scale works and smaller, intricate tags tucked into corners. The neighborhood's gritty industrial vibe adds to the underground energy, making it a favorite spot for photographers, locals and urban explorers alike. Nearby streets also host additional pieces, encouraging visitors to wander and uncover more hidden gems along the way.
+      </p>
+    </section>
+
+    <!-- ARTISTS -->
+    <section class="artists" aria-labelledby="artistsTitle">
+      <h2 id="artistsTitle" class="visually-hidden">Artists</h2>
+
+      <article class="artist-card">
+        <div class="artist-card__media">
+          <img src="assets/sydhavnen/birk.jpg" alt="Portrait of Peter Birk by Jesper Balleby" class="artist-card__img">
+        </div>
+
+        <div class="artist-card__content">
+          <h3 class="artist-card__name">Peter Birk</h3>
+          <p class="artist-card__text">
+            Peter Birk is a Danish street artist known for his vibrant, expressive murals that blend bold colors with dynamic forms. His work often explores urban life, personal stories and social commentary, leaving a lasting mark on the walls of Aarhus and beyond.
+          </p>
+          <a class="artist-card__btn" href="#">Read more</a>
+        </div>
+      </article>
+
+      <article class="artist-card">
+        <div class="artist-card__media">
+          <img src="assets/sydhavnen/hernan.jpg" alt="Portrait of David Hernan" class="artist-card__img">
+        </div>
+
+        <div class="artist-card__content">
+          <h3 class="artist-card__name">David Hernan</h3>
+          <p class="artist-card__text">
+            David Hernan is a contemporary street artist recognized for his intricate, visually striking murals. Combining geometric patterns with urban storytelling, his work brings life to public spaces and transforms everyday walls into immersive art experiences.
+          </p>
+          <a class="artist-card__btn" href="#">Read more</a>
+        </div>
+      </article>
+    </section>
+
+    <!-- MAP -->
+    <section class="spot__map" aria-labelledby="mapTitle">
+      <h2 id="mapTitle" class="visually-hidden">Map</h2>
+
+      <div class="mapbox">
+        <div
+          id="spotMap"
+          class="mapbox__map"
+          data-lat="56.148944"
+          data-lng="10.210639">
+        </div>
+
+        <a
+          class="mapbox__btn"
+          href="https://www.google.com/maps?q=56.148944,10.210639"
+          target="_blank"
+          rel="noopener">
+          Google Maps
+        </a>
+
+        <a
+          class="mapbox__icon"
+          href="https://www.google.com/maps?q=56.148944,10.210639"
+          target="_blank"
+          rel="noopener"
+          aria-label="Open in Google Maps">
+          <img src="assets/map-arrow.svg" alt="">
+        </a>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="spot__about" aria-labelledby="aboutTitle">
+      <h2 id="aboutTitle" class="spot__abouttitle">About the spot</h2>
+
+      <div class="facts">
+        <div class="fact">
+          <img src="assets/clock.png" alt="" class="fact__icon">
+          <span class="fact__text">Best at 10-15</span>
+        </div>
+
+        <div class="fact">
+          <img src="assets/sad.png" alt="" class="fact__icon">
+          <span class="fact__text">Not easily accessible</span>
+        </div>
+
+        <div class="fact">
+          <img src="assets/lamp.png" alt="" class="fact__icon">
+          <span class="fact__text">Well lit</span>
+        </div>
+
+        <div class="fact">
+          <img src="assets/restaurant.png" alt="" class="fact__icon fact__icon--restaurant">
+          <span class="fact__text">Restaurants nearby</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="reviews" aria-labelledby="reviewsTitle">
+      <h2 id="reviewsTitle" class="visually-hidden">Reviews</h2>
+
+      <div class="reviews__inner">
+        <h3 class="reviews__title">REVIEWS</h3>
+
+        <div class="reviews__stars">
+          <span class="visually-hidden">Rating: 4 out of 5</span>
+          <img src="assets/star-full.png" alt="" aria-hidden="true">
+          <img src="assets/star-full.png" alt="" aria-hidden="true">
+          <img src="assets/star-full.png" alt="" aria-hidden="true">
+          <img src="assets/star-full.png" alt="" aria-hidden="true">
+          <img src="assets/star-empty.png" alt="" aria-hidden="true">
+        </div>
+
+        <button class="reviews__btn" type="button">Write a review</button>
+
+        <article class="review">
+          <h4 class="review__name">tom.explores</h4>
+          <p class="review__text">Great mix of styles, from small tags to huge murals.</p>
+        </article>
+
+        <article class="review">
+          <h4 class="review__name">rawroutes</h4>
+          <p class="review__text">Perfect spot for photography, the colors and textures are incredible.</p>
+        </article>
+
+        <article class="review">
+          <h4 class="review__name">emma.travels</h4>
+          <p class="review__text">Love the industrial vibe, the art pops even more here.</p>
+        </article>
+
+        <a class="reviews__more" href="#">Read more</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__top">
+      <nav class="footer__links" aria-label="Footer navigation">
+        <a href="index.html">HOME</a>
+        <a href="walls.html">THE WALLS</a>
+        <a href="404.html">FAQ</a>
+      </nav>
+
+      <div class="footer__contact">
+        <a class="footer__cta" href="#">Get in touch</a>
+        <a href="mailto:email@hiddenwalls.com">email@hiddenwalls.com</a>
+        <span>+45 12 34 56 78</span>
+
+        <nav class="socials" aria-label="Social media links">
+          <a class="social" href="#" aria-label="Facebook"><img src="assets/facebook.svg" alt="Facebook"></a>
+          <a class="social" href="#" aria-label="Instagram"><img src="assets/instagram.svg" alt="Instagram"></a>
+          <a class="social" href="#" aria-label="TikTok"><img src="assets/tiktok.svg" alt="TikTok"></a>
+        </nav>
+      </div>
+
+      <img class="footer__logo" src="assets/logooff.png" alt="Hidden Walls">
+    </div>
+
+    <p class="fineprint">© 2025 Hidden Walls. Student project, Business Academy Aarhus.</p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="scripts.js"></script>
+</body>
+</html>

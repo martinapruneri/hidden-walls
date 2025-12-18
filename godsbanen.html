@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hidden Walls | Godsbanen</title>
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles/spots.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+
+<body>
+  <!-- Top navigation -->
+  <header class="topbar">
+    <div class="nav nav--mobile">
+      <button
+        class="nav__toggle"
+        id="menuBtn"
+        aria-haspopup="true"
+        aria-expanded="false"
+        aria-controls="mobileMenu">
+        MENU
+      </button>
+    </div>
+
+    <div class="menu-overlay" id="mobileMenu" hidden>
+      <button class="menu-close" id="menuClose" aria-label="Close menu">X</button>
+
+      <nav class="menu-links" aria-label="Mobile navigation">
+        <a href="index.html">HOME</a>
+        <a href="walls.html">THE WALLS</a>
+        <a href="404.html">FAQ</a>
+      </nav>
+    </div>
+
+    <nav class="nav nav--desktop" aria-label="Primary navigation">
+      <a class="nav__link" href="index.html">HOME</a>
+      <a class="nav__link" href="walls.html">THE WALLS</a>
+      <a class="nav__link" href="404.html">FAQ</a>
+    </nav>
+  </header>
+
+  <!-- PAGE -->
+  <main class="spot">
+    <!-- GALLERY -->
+    <section class="spot__gallery" aria-labelledby="galleryTitle">
+      <h2 id="galleryTitle" class="visually-hidden">Photo gallery</h2>
+
+      <div class="gallery" data-gallery>
+        <img class="gallery__img is-active" src="assets/walls/godsbanen.jpg" alt="Godsbanen street art at Godsbanen in Aarhus">
+        <img class="gallery__img" src="assets/godsbanen/godsbanen-2.jpg" alt="Godsbanen street art wall">
+        <img class="gallery__img" src="assets/godsbanen/godsbanen-3.jpg" alt="Godsbanen artwork detail">
+        <img class="gallery__img" src="assets/godsbanen/godsbanen-4.jpg" alt="Godsbanen graffiti and murals">
+
+        <button class="gallery__nav gallery__nav--prev" type="button" aria-label="Previous photo" data-prev>‹</button>
+        <button class="gallery__nav gallery__nav--next" type="button" aria-label="Next photo" data-next>›</button>
+
+        <!-- Desktop thumbnails -->
+        <div class="gallery__thumbs" role="group" aria-label="Choose a photo">
+          <button class="gallery__thumb is-active" type="button" data-thumb="0">
+            <img src="assets/walls/godsbanen.jpg" alt="">
+          </button>
+          <button class="gallery__thumb" type="button" data-thumb="1">
+            <img src="assets/godsbanen/godsbanen-2.jpg" alt="">
+          </button>
+          <button class="gallery__thumb" type="button" data-thumb="2">
+            <img src="assets/godsbanen/godsbanen-3.jpg" alt="">
+          </button>
+          <button class="gallery__thumb" type="button" data-thumb="3">
+            <img src="assets/godsbanen/godsbanen-4.jpg" alt="">
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- HEADER -->
+    <section class="spot__head" aria-labelledby="spotTitle">
+      <div class="spot__titleblock">
+        <h1 id="spotTitle" class="spot__title">
+          <span class="spot__title--neon">GODSBANEN</span>
+          <span class="spot__title--by">by VARIOUS ARTISTS</span>
+        </h1>
+
+        <a
+          class="spot__meta"
+          href="https://www.google.com/maps?q=56.1535,10.194056"
+          target="_blank"
+          rel="noopener">
+          Karen Wegeners Gade 8, 8000 Aarhus
+        </a>
+      </div>
+
+      <!-- MOBILE: only this share icon is visible -->
+      <a class="spot__share" href="#" aria-label="Share this spot">
+        <img src="assets/share.svg" alt="">
+      </a>
+
+      <!-- DESKTOP: icons in a row + label underneath -->
+      <div class="spot__shareblock" role="group" aria-label="Share options">
+        <div class="spot__shareicons">
+          <a class="spot__shareicon" href="#" aria-label="Share this spot">
+            <img src="assets/share.svg" alt="">
+          </a>
+
+          <a class="spot__social" href="#" aria-label="Facebook">
+            <img src="assets/facebook.svg" alt="">
+          </a>
+
+          <a class="spot__social" href="#" aria-label="Instagram">
+            <img src="assets/instagram.svg" alt="">
+          </a>
+
+          <a class="spot__social" href="#" aria-label="TikTok">
+            <img src="assets/tiktok.svg" alt="">
+          </a>
+        </div>
+
+        <div class="spot__sharelabel">Share this spot</div>
+      </div>
+    </section>
+
+    <!-- TEXT -->
+    <section class="spot__text" aria-labelledby="descTitle">
+      <h2 id="descTitle" class="visually-hidden">Description</h2>
+
+      <p>
+        Godsbanen is a hidden gem of Aarhus’ street art scene, where walls come alive with ever-changing murals and graffiti.
+        Every visit is a chance to discover something new and unexpected.
+      </p>
+
+      <p>
+        Once an old industrial complex, it now hosts workshops, exhibitions and performance spaces — while the exterior walls
+        act as a living open-air gallery. From bold murals to small tags, it’s a place to wander, explore and soak in the city’s
+        underground creative energy.
+      </p>
+    </section>
+
+    <!-- MAP -->
+    <section class="spot__map" aria-labelledby="mapTitle">
+      <h2 id="mapTitle" class="visually-hidden">Map</h2>
+
+      <div class="mapbox">
+        <div
+          id="spotMap"
+          class="mapbox__map"
+          data-lat="56.1535"
+          data-lng="10.194056">
+        </div>
+
+        <a
+          class="mapbox__btn"
+          href="https://www.google.com/maps?q=56.1535,10.194056"
+          target="_blank"
+          rel="noopener">
+          Open in Google Maps
+        </a>
+
+        <!-- Desktop-only -->
+        <a
+          class="mapbox__icon"
+          href="https://www.google.com/maps?q=56.1535,10.194056"
+          target="_blank"
+          rel="noopener"
+          aria-label="Open in Google Maps">
+          <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M7 17L17 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M10 7h7v7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="spot__about" aria-labelledby="aboutTitle">
+      <h2 id="aboutTitle" class="spot__abouttitle">About the spot</h2>
+
+      <div class="facts">
+        <div class="fact">
+          <img src="assets/clock.png" alt="" class="fact__icon">
+          <span class="fact__text">Best at 8-22</span>
+        </div>
+
+        <div class="fact">
+          <img src="assets/smile.png" alt="" class="fact__icon">
+          <span class="fact__text">Easily accessible</span>
+        </div>
+
+        <div class="fact">
+          <img src="assets/lamp.png" alt="" class="fact__icon">
+          <span class="fact__text">Well lit</span>
+        </div>
+
+        <div class="fact">
+          <img src="assets/restaurant.png" alt="" class="fact__icon fact__icon--restaurant">
+          <span class="fact__text">Restaurants nearby</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="reviews" aria-labelledby="reviewsTitle">
+      <h2 id="reviewsTitle" class="visually-hidden">Reviews</h2>
+
+      <div class="reviews__inner">
+        <h3 class="reviews__title">REVIEWS</h3>
+
+        <div class="reviews__stars">
+          <span class="visually-hidden">Rating: 4 out of 5</span>
+          <img src="assets/star-full.png" alt="" aria-hidden="true">
+          <img src="assets/star-full.png" alt="" aria-hidden="true">
+          <img src="assets/star-full.png" alt="" aria-hidden="true">
+          <img src="assets/star-full.png" alt="" aria-hidden="true">
+          <img src="assets/star-empty.png" alt="" aria-hidden="true">
+        </div>
+
+        <button class="reviews__btn" type="button">Write a review</button>
+
+        <article class="review">
+          <h4 class="review__name">tom.explores</h4>
+          <p class="review__text">
+            Sometimes crowded, but still worth visiting for the art alone.
+          </p>
+        </article>
+
+        <article class="review">
+          <h4 class="review__name">rawroutes</h4>
+          <p class="review__text">
+            The creative vibe here is unmatched. You feel the city’s underground energy.
+          </p>
+        </article>
+
+        <article class="review">
+          <h4 class="review__name">emma.travels</h4>
+          <p class="review__text">
+            Perfect for photos and discovering local artists.
+          </p>
+        </article>
+
+        <a class="reviews__more" href="#">Read more</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__top">
+      <nav class="footer__links" aria-label="Footer navigation">
+        <a href="index.html">HOME</a>
+        <a href="walls.html">THE WALLS</a>
+        <a href="404.html">FAQ</a>
+      </nav>
+
+      <div class="footer__contact">
+        <a class="footer__cta" href="#">Get in touch</a>
+        <a href="mailto:email@hiddenwalls.com">email@hiddenwalls.com</a>
+        <span>+45 12 34 56 78</span>
+
+        <nav class="socials" aria-label="Social media links">
+          <a class="social" href="#" aria-label="Facebook">
+            <img src="assets/facebook.svg" alt="Facebook">
+          </a>
+          <a class="social" href="#" aria-label="Instagram">
+            <img src="assets/instagram.svg" alt="Instagram">
+          </a>
+          <a class="social" href="#" aria-label="TikTok">
+            <img src="assets/tiktok.svg" alt="TikTok">
+          </a>
+        </nav>
+      </div>
+
+      <img class="footer__logo" src="assets/logooff.png" alt="Hidden Walls">
+    </div>
+
+    <p class="fineprint">© 2025 Hidden Walls. Student project, Business Academy Aarhus.</p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="scripts.js"></script>
+</body>
+</html>
